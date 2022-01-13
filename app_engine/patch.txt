@@ -1,0 +1,43 @@
+diff -ruN original/docker-entrypoint.sh changes/docker-entrypoint.sh
+--- original/docker-entrypoint.sh	2020-09-21 16:42:59.697455806 +1000
++++ changes/docker-entrypoint.sh	2020-09-21 16:55:19.307000000 +1000
+@@ -5,6 +5,8 @@
+ WORKER_CLASS=${WORKER_CLASS:-gevent}
+ ACCESS_LOG=${ACCESS_LOG:--}
+ ERROR_LOG=${ERROR_LOG:--}
++WORKER_TIMEOUT=${WORKER_TIMEOUT:-60}
++WORKER_PORT=${WORKER_PORT:-8080}
+ WORKER_TEMP_DIR=${WORKER_TEMP_DIR:-/dev/shm}
+ SECRET_KEY=${SECRET_KEY:-}
+ DATABASE_URL=${DATABASE_URL:-}
+@@ -42,8 +44,9 @@
+ # Start CTFd
+ echo "Starting CTFd"
+ exec gunicorn 'CTFd:create_app()' \
+-    --bind '0.0.0.0:8000' \
++    --bind "0.0.0.0:$WORKER_PORT" \
+     --workers $WORKERS \
++    --timeout $WORKER_TIMEOUT \
+     --worker-tmp-dir "$WORKER_TEMP_DIR" \
+     --worker-class "$WORKER_CLASS" \
+     --access-logfile "$ACCESS_LOG" \
+diff -ruN original/CTFd/utils/uploads/uploaders.py changes/CTFd/utils/uploads/uploaders.py
+--- original/CTFd/utils/uploads/uploaders.py   2022-01-11 21:19:25.598632775 +0200
++++ changes/CTFd/utils/uploads/uploaders.py   2022-01-11 21:19:04.299457399 +0200
+@@ -5,6 +5,7 @@
+ from shutil import copyfileobj, rmtree
+ 
+ import boto3
++from botocore.client import Config
+ from flask import current_app, redirect, send_file
+ from flask.helpers import safe_join
+ from werkzeug.utils import secure_filename
+@@ -86,6 +87,7 @@
+         endpoint = get_app_config("AWS_S3_ENDPOINT_URL")
+         client = boto3.client(
+             "s3",
++            config=Config(signature_version="s3v4"), # required for GCS
+             aws_access_key_id=access_key,
+             aws_secret_access_key=secret_key,
+             endpoint_url=endpoint,
+
