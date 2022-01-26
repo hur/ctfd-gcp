@@ -6,7 +6,6 @@ jobs:
     runs-on: ubuntu-latest # The following are JavaScript actions (not Docker)
     env:
       working-directory: terraform/ # Update this!
-      TF_VAR_db_user_password: ${{ secrets.TF_VAR_DB_USER_PASSWORD }}
 
     name: Run Infracost
     steps:
@@ -30,6 +29,8 @@ jobs:
       - name: Terraform plan
         run: terraform plan -out tfplan.binary
         working-directory: ${{ env.working-directory }}
+        env:
+          TF_VAR_db_user_password: ${{ secrets.TF_VAR_DB_USER_PASSWORD }}
 
       - name: Terraform show
         run: terraform show -json tfplan.binary > plan.json
