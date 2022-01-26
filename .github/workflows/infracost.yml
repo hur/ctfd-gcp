@@ -6,6 +6,7 @@ jobs:
     runs-on: ubuntu-latest # The following are JavaScript actions (not Docker)
     env:
       working-directory: terraform/ # Update this!
+      GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }} 
 
     name: Run Infracost
     steps:
