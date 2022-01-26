@@ -1,5 +1,5 @@
-project_name = "pwned-test10"
-project_id = "pwned-test10"
+project_name = "pwned-test"
+project_id = "pwned-test"
 
 ctfd_instances = 1
 
