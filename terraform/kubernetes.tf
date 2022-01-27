@@ -1,6 +1,6 @@
 resource "google_container_cluster" "ctf_cluster" {
     name = "ctf-cluster"
-    location = var.location
+    location = var.region
     project = google_project.ctf.project_id
     
     # We can't create a cluster with no node pool defined, but we want to only use
@@ -12,7 +12,7 @@ resource "google_container_cluster" "ctf_cluster" {
 
 resource "google_container_node_pool" "node_pool" {
     name = "ctf-node-pool"
-    location = var.zone
+    location = var.region
     cluster = google_container_cluster.ctf_cluster.name
 
     node_count = 1
