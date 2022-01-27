@@ -12,7 +12,7 @@ resource "google_container_cluster" "ctf_cluster" {
 
 resource "google_container_node_pool" "node_pool" {
     name = "ctf-node-pool"
-    location = var.location
+    location = var.zone
     cluster = google_container_cluster.ctf_cluster.name
 
     node_count = 1
