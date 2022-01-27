@@ -29,7 +29,7 @@ resource "random_id" "db_name_suffix" {
 resource "google_sql_database" "ctfd_db" {
     name = "ctfd"
     instance = google_sql_database_instance.ctfd_db.name
-    project = google_project.pwned.project_id
+    project = google_project.ctf.project_id
 
     charset = "utf8mb4" # CTFd uses this charset
 }
@@ -54,7 +54,7 @@ resource "google_sql_database_instance" "ctfd_db" {
 
 resource "google_sql_user" "db_user" {
     name = var.db_user_name
-    project = google_project.pwned.project_id
+    project = google_project.ctf.project_id
     instance = google_sql_database_instance.ctfd_db.name
     password = var.db_user_password
 }
