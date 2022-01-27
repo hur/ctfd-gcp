@@ -32,7 +32,7 @@ data "google_billing_account" "acct" {
   open = true
 }
 
-resource "google_project" "pwned" {
+resource "google_project" "ctf" {
     name = var.project_name
     project_id = var.project_id
 
