@@ -29,7 +29,6 @@ resource "google_app_engine_flexible_app_version" "ctfd" {
             name = google_storage_bucket_object.patch.name
             source_url = "https://storage.googleapis.com/${google_storage_bucket.ctfd_files.name}/${google_storage_bucket_object.patch.name}"
         }
-
     }
 
 
