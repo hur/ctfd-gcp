@@ -13,7 +13,7 @@ variable "gcp_services_list" {
 
 resource "google_project_service" "compute_engine" {
     for_each = toset(var.gcp_services_list)
-    project = google_project.pwned.project_id
+    project = google_project.ctf.project_id
     service = each.key
     disable_dependent_services = false
     disable_on_destroy = false
