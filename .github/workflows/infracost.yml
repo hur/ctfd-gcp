@@ -22,7 +22,7 @@ jobs:
           terraform_wrapper: false # This is recommended so the `terraform show` command outputs valid JSON
           #cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
 
-      # IMPORTANT: add any required steps here to setup cloud credentials so Terraform can run
+     
       #- name: Setup Terraform variables
       #  working-directory: ${{ env.working-directory }}
       ##  id: vars
