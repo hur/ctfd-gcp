@@ -1,6 +1,7 @@
 variable "gcp_services_list" {
     type = list(string)
     default = [
+	"cloudbilling.googleapis.com",
         "appengineflex.googleapis.com",
         "compute.googleapis.com",
         "vpcaccess.googleapis.com",
