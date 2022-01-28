@@ -7,12 +7,6 @@ terraform {
            version = "3.84.0" # Pin to 3.84.0 until the following issue is fixed: https://github.com/hashicorp/terraform-provider-google/issues/10185
       }
     }
-    #cloud {   
-    #    organization = "sigint-test"
-    #    workspaces {
-    #        name = "pwned-infra-test"
-    #    }
-    #}
 }
 
 provider "google" {
