@@ -43,7 +43,7 @@ variable ctfd_instances {
     type = number
 }
 
-variable billing_acct {
+variable billing_account {
     type = string
     default = "My Billing Account"
 }
