@@ -1,5 +1,7 @@
 # ctfd-gcp
 
+An IaaC deployment of [CTFd](https://ctfd.io/) in Google Cloud Platform, intended to be reliable and easily scalable for larger CTFs. 
+
 ### Architecture Overview
 
 CTFd is deployed on App Engine Flex, which provides load balancing, auto-scaling, health checks and more right out of the box.
