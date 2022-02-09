@@ -10,6 +10,8 @@ The application resides on a VPC which has a direct peering connection to a Memo
 
 There is also a private services access connection to Cloud SQL which is used as the database for CTFd. Again, scaling and other operation are easy.
 
+CTFd stores uploaded challenge files in a Google Storage Bucket.
+
 Furthermore, both the Memorystore and Cloud SQL are assigned only private IP addresses within our VPC, making inaccessible from the internet and enhancing security.
 
 ![](docs/architecture_overview.svg)
