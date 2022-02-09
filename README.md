@@ -13,3 +13,5 @@ There is also a private services access connection to Cloud SQL which is used as
 Furthermore, both the Memorystore and Cloud SQL are assigned only private IP addresses within our VPC, making inaccessible from the internet and enhancing security.
 
 ![](docs/architecture_overview.svg)
+
+NOTE: this diagram is missing i.e. buckets used for challenge storage and buckets storing the CTFd Dockerfile
