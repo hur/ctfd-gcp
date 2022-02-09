@@ -52,14 +52,15 @@ resource "google_sql_database_instance" "ctfd_db" {
     }
 }
 
+resource "random_password" "db_user_password" {
+  length           = 16
+  special          = true
+  override_special = "_%@!"
+}
+
 resource "google_sql_user" "db_user" {
     name = var.db_user_name
     project = google_project.ctf.project_id
     instance = google_sql_database_instance.ctfd_db.name
-    password = var.db_user_password
-}
-
-output "db_url" {
-    description = "Private DB IP"
-    value = "${google_sql_database_instance.ctfd_db.private_ip_address}"
+    password = random_password.db_user_password
 }
