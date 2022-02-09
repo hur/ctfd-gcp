@@ -42,3 +42,8 @@ variable access_connector_cidr {
 variable ctfd_instances {
     type = number
 }
+
+var billing_acct {
+    type = string
+    default = "My Billing Account"
+}

@@ -22,7 +22,7 @@ provider "google-beta" {
 }
 
 data "google_billing_account" "acct" {
-  display_name = "My Billing Account"
+  display_name = var.billing_account
   open = true
 }
 

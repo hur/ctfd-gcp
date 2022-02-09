@@ -1,5 +1,6 @@
 project_name = "pwned-test"
 project_id = "pwned-test"
+billing_account = "My Billing Account"
 
 ctfd_instances = 1
 
