@@ -62,5 +62,5 @@ resource "google_sql_user" "db_user" {
     name = var.db_user_name
     project = google_project.ctf.project_id
     instance = google_sql_database_instance.ctfd_db.name
-    password = random_password.db_user_password
+    password = random_password.db_user_password.result
 }
