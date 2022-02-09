@@ -47,3 +47,7 @@ variable billing_account {
     type = string
     default = "My Billing Account"
 }
+
+variable ctfd_resources {
+   type = map(any)
+}

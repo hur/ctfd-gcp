@@ -14,6 +14,11 @@ resource "google_project_iam_member" "gae_api" {
   member  = "serviceAccount:service-${google_project.ctf.number}@gae-api-prod.google.com.iam.gserviceaccount.com"
 }
 
+resource "random_password" "ctfd_secret_key" {
+  length           = 32
+  special          = true
+}
+
 resource "google_app_engine_flexible_app_version" "ctfd" {
     version_id = "v2"
     project = google_project_iam_member.gae_api.project
@@ -31,7 +36,6 @@ resource "google_app_engine_flexible_app_version" "ctfd" {
         }
     }
 
-
     network {
         name = google_compute_network.ctf_vpc.name 
         subnetwork = google_compute_subnetwork.ctf_vpc_subnet1.name
@@ -45,6 +49,9 @@ resource "google_app_engine_flexible_app_version" "ctfd" {
         AWS_SECRET_ACCESS_KEY = google_storage_hmac_key.interop_key.secret
         AWS_S3_BUCKET = google_storage_bucket.challenge_files.name
         AWS_S3_ENDPOINT_URL = "https://storage.googleapis.com"
+	WORKERS = 2 * (var.ctfd_resources["cpu"]) + 1 # gunicorn recommends 2 * (num_cpus) + 1 workers. see: https://docs.gunicorn.org/en/0.16.1/design.html
+	REVERSE_PROXY = "1,0,0,0,0" # we are behind a single load balancer.
+	SECRET_KEY = random_password.ctfd_secret_key.result
     }
 
     readiness_check {
@@ -59,5 +66,10 @@ resource "google_app_engine_flexible_app_version" "ctfd" {
         instances = var.ctfd_instances
     }
 
-    delete_service_on_destroy = true
+    resources {
+        cpu = var.ctfd_resources["cpu"]
+        disk_gb = var.ctfd_resources["disk_gb"]
+        memory_gb = var.ctfd_resources["memory_gb"]
+    }
+    
 }
