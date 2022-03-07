@@ -1,5 +1,5 @@
-project_name = "pwned-test-1"
-project_id = "pwned-test-1"
+project_name = "pwned3"
+project_id = "pwned3"
 billing_account = "My Billing Account"
 
 ctfd_instances = 1

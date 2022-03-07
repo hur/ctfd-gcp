@@ -43,7 +43,7 @@ resource "google_sql_database_instance" "ctfd_db" {
     settings {
         tier = "db-f1-micro" # TODO: pick tier
         disk_size = "10" # GB
-        disk_type = "PD_HDD" # TODO: PD_SSD
+        disk_type = "PD_SSD" # TODO: PD_SSD
 
         ip_configuration {
             ipv4_enabled = false # disable public ipv4 address
