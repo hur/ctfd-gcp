@@ -1,4 +1,4 @@
-FROM ctfd/ctfd:3.4.1
+FROM ctfd/ctfd:3.4.3
 
 # apply patches
 WORKDIR /opt/CTFd

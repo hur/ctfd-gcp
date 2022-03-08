@@ -19,8 +19,8 @@ resource "random_password" "ctfd_secret_key" {
   special          = true
 }
 
-resource "google_app_engine_flexible_app_version" "ctfd2" {
-    version_id = "v3"
+resource "google_app_engine_flexible_app_version" "ctfd" {
+    version_id = "v3-4-3"
     project = google_project_iam_member.gae_api.project
     service = "default"
     runtime = "custom"
