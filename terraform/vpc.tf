@@ -23,32 +23,32 @@ resource "google_vpc_access_connector" "connector" {
 
 ### FIREWALL RULES 
 
-resource "google_compute_firewall" "ctf_vpc_fw_allow_ssh" {
-    project = google_project.ctf.name
-    name = "${google_compute_network.ctf_vpc.name}-allow-ssh"
-    network = google_compute_network.ctf_vpc.name
-    description = "Allow SSH connections to machines in the VPC"
+#resource "google_compute_firewall" "ctf_vpc_fw_allow_ssh" {
+#    project = google_project.ctf.name
+#    name = "${google_compute_network.ctf_vpc.name}-allow-ssh"
+#    network = google_compute_network.ctf_vpc.name
+#    description = "Allow SSH connections to machines in the VPC"
+#
+#    allow {
+#        protocol = "tcp"
+#        ports = ["22"]
+#    }
+#
+#    source_ranges = ["0.0.0.0/0"]
+#}
 
-    allow {
-        protocol = "tcp"
-        ports = ["22"]
-    }
-
-    source_ranges = ["0.0.0.0/0"]
-}
-
-resource "google_compute_firewall" "ctf_vpc_fw_allow_icmp" {
-    project = google_project.ctf.name
-    name = "${google_compute_network.ctf_vpc.name}-allow-icmp"
-    network = google_compute_network.ctf_vpc.name
-    description = "Allow ICMP packets to machines in the VPC"
-
-    allow {
-        protocol = "icmp"
-    }
-
-    source_ranges = ["0.0.0.0/0"]
-}
+#resource "google_compute_firewall" "ctf_vpc_fw_allow_icmp" {
+#    project = google_project.ctf.name
+#    name = "${google_compute_network.ctf_vpc.name}-allow-icmp"
+#    network = google_compute_network.ctf_vpc.name
+#    description = "Allow ICMP packets to machines in the VPC"
+#
+#   allow {
+#        protocol = "icmp"
+#    }
+#
+#    source_ranges = ["0.0.0.0/0"]
+#}
 
 /*
 resource "google_compute_firewall" "ctf_vpc_fw_allow_iap_ssh_ingress" {

@@ -23,11 +23,11 @@ resource "google_storage_bucket_iam_member" "interop_iam" {
 }
 
 
-resource "google_storage_bucket_iam_member" "public" {
-    bucket = google_storage_bucket.challenge_files.name
-    role = "roles/storage.legacyObjectReader"
-    member = "allUsers"
-}
+#resource "google_storage_bucket_iam_member" "public" {
+#    bucket = google_storage_bucket.challenge_files.name
+#    role = "roles/storage.legacyObjectReader"
+#    member = "allUsers"
+#}
 
 # S3-like bucket for ctfd deployment
 resource "google_storage_bucket" "ctfd_files" {
