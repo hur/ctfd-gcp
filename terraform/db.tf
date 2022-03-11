@@ -41,7 +41,7 @@ resource "google_sql_database_instance" "ctfd_db" {
     database_version = "MYSQL_8_0"
     depends_on = [google_service_networking_connection.private_vpc_connection]
     settings {
-        tier = "db-f1-micro" # TODO: pick tier
+        tier = "db-n1-standard-4" # TODO: pick tier
         disk_size = "10" # GB
         disk_type = "PD_SSD" # TODO: PD_SSD
 
