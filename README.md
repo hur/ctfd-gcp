@@ -2,6 +2,8 @@
 
 An IaaC deployment of [CTFd](https://ctfd.io/) in Google Cloud Platform, intended to be reliable and easily scalable for larger CTFs. Inspired by [DownUnderCTF/ctfd-appengine](https://github.com/DownUnderCTF/ctfd-appengine).
 
+Used for pwned3 CTF. More details on the pwned3 infrastructure [here](https://www.atteniemi.com/posts/pwned3-infra-writeup/).
+
 ### Architecture Overview
 
 CTFd is deployed on App Engine Flex, which provides load balancing, auto-scaling, health checks and more right out of the box.
