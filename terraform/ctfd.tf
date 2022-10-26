@@ -49,9 +49,9 @@ resource "google_app_engine_flexible_app_version" "ctfd" {
         AWS_SECRET_ACCESS_KEY = google_storage_hmac_key.interop_key.secret
         AWS_S3_BUCKET = google_storage_bucket.challenge_files.name
         AWS_S3_ENDPOINT_URL = "https://storage.googleapis.com"
-		WORKERS = 2 * (var.ctfd_resources["cpu"]) + 1 # gunicorn recommends 2 * (num_cpus) + 1 workers. see: https://docs.gunicorn.org/en/0.16.1/design.html
-		REVERSE_PROXY = "2,1,0,0,0" # we are behind a single load balancer and a cloudflare reverse proxy.
-		SECRET_KEY = random_password.ctfd_secret_key.result
+	WORKERS = 2 * (var.ctfd_resources["cpu"]) + 1 # gunicorn recommends 2 * (num_cpus) + 1 workers. see: https://docs.gunicorn.org/en/0.16.1/design.html
+	REVERSE_PROXY = "2,1,0,0,0" # we are behind a single load balancer and a cloudflare reverse proxy.
+	SECRET_KEY = random_password.ctfd_secret_key.result
     }
 
     readiness_check {
