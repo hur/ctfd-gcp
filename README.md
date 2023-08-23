@@ -2,7 +2,7 @@
 
 An IaaC deployment of [CTFd](https://ctfd.io/) in Google Cloud Platform, intended to be reliable and easily scalable for larger CTFs. Inspired by [DownUnderCTF/ctfd-appengine](https://github.com/DownUnderCTF/ctfd-appengine).
 
-Used for pwned3 CTF. More details on the pwned3 infrastructure [here](https://www.atteniemi.com/ctf-infra/).
+Used for pwned3 CTF. More details on the pwned3 infrastructure [here](https://www.atteniemi.com/ctf-infra-writeup/).
 
 ### Architecture Overview
 
